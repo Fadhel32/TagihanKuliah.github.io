@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #001f3f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #ffd700;
+        position: relative;
+      }
+      .profile-card {
+        background: #003366;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        width: 600px;
+        padding: 30px;
+        text-decoration: none;
+        color: #ffd700;
+      }
+      .profile-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 3px solid #ffd700;
+        cursor: pointer;
+      }
+      .profile-card h2 {
+        margin: 10px 0;
+        font-size: 2em;
+      }
+      .profile-card p {
+        margin: 5px 0;
+        font-size: 1.2em;
+      }
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: darkblue; /* Warna background biru navy */
+        color: #ffd700; /* Warna teks kuning */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .back-button:hover {
+        background-color: darkblue; /* Efek hover */
+      }
+
+      /* Modal styling */
+      #modalGambar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #modalGambar.show {
+        display: flex; /* Tampilkan modal */
+        opacity: 1; /* Animasi masuk */
+      }
+      #modalGambar img {
+        max-width: 90%;
+        max-height: 90%;
+        border: 5px solid #ffd700;
+        border-radius: 10px;
+        transform: scale(0.8);
+        animation: zoomIn 0.3s ease forwards;
+      }
+      #modalGambar span {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* Animasi */
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="back-button">Back</a>
+
+    <div class="profile-card">
+      <img src="foto.jpg" alt="Foto Profile" onclick="bukaModal()" />
+      <h2>Nama: Fadhel Rifky Wicaksono</h2>
+      <p>NIM: 240103263</p>
+      <p>Kelas: 24B1</p>
+      <p>Prodi: Teknik Informatika</p>
+      <p>Pembimbing Akademik: Dwi Hartanti, M.Kom</p>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalGambar">
+      <span onclick="tutupModal()">&times;</span>
+      <img src="foto.jpg" alt="Foto Profile Besar" />
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      function bukaModal() {
+        const modal = document.getElementById("modalGambar");
+        modal.style.display = "flex"; // Tampilkan modal
+        setTimeout(() => {
+          modal.classList.add("show"); // Aktifkan animasi fade-in
+        }, 10); // Tambahkan sedikit delay untuk memastikan transisi berjalan
+      }
+
+      function tutupModal() {
+        const modal = document.getElementById("modalGambar");
+        modal.classList.remove("show"); // Hapus animasi fade-in
+        setTimeout(() => {
+          modal.style.display = "none"; // Sembunyikan modal setelah animasi selesai
+        }, 300); // Waktu sinkron dengan animasi `opacity`
+      }
+    </script>
+  </body>
+</html>
